@@ -13,6 +13,7 @@ import Shop from "./pages/Shop";
 import News from "./pages/News";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import WooCommerceSettings from "./components/WooCommerceSettings";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,7 @@ const App = () => (
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <WooCommerceSettings />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
