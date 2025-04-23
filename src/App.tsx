@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,6 +13,7 @@ import News from "./pages/News";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import WooCommerceSettings from "./components/WooCommerceSettings";
+import TawkToChatWidget from "@/components/TawkToChatWidget";
 
 const queryClient = new QueryClient();
 
@@ -30,7 +30,6 @@ const App = () => (
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/about" element={<About />} />
             <Route path="/shop" element={<Shop />} />
-            {/* Removed /product-management route to rely on WooCommerce only */}
             <Route path="/news" element={<News />} />
             <Route path="/contact" element={<Contact />} />
           </Route>
@@ -38,6 +37,7 @@ const App = () => (
         </Routes>
         <WooCommerceSettings />
       </BrowserRouter>
+      <TawkToChatWidget />
     </TooltipProvider>
   </QueryClientProvider>
 );
