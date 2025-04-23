@@ -1,142 +1,121 @@
-
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, ShoppingCart } from "lucide-react";
-import { useIsMobile } from "@/hooks/use-mobile";
-import { Badge } from "./ui/badge";
+import { ShoppingCart } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { Button } from "@/components/ui/button";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 
-type NavbarProps = {
-  isArabic?: boolean;
-  cartCount?: number;
-  onLanguageToggle?: () => void;
+interface NavbarProps {
+  isArabic: boolean;
+  cartCount: number;
+  onLanguageToggle: () => void;
 }
 
-const Navbar = ({ isArabic = false, cartCount = 0, onLanguageToggle }: NavbarProps) => {
-  const [isScrolled, setIsScrolled] = useState(false);
+const Navbar = ({ isArabic, cartCount, onLanguageToggle }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isMobile = useIsMobile();
-  
-  const handleScroll = () => {
-    setIsScrolled(window.scrollY > 50);
-  };
-  
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  
-  // Define nav items
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   const navItems = [
-    { label: isArabic ? "الرئيسية" : "Home", path: "/" },
-    { label: isArabic ? "خدمات" : "Services", path: "/services" },
-    { label: isArabic ? "أعمالنا" : "Portfolio", path: "/portfolio" },
-    { label: isArabic ? "من نحن" : "About", path: "/about" },
-    { label: isArabic ? "اتصل بنا" : "Contact", path: "/contact" },
-    { label: isArabic ? "المتجر" : "Shop", path: "/shop" },
-    { label: isArabic ? "الأخبار" : "News", path: "/news" },
+    { name: "Home", name_ar: "الرئيسية", path: "/" },
+    { name: "Services", name_ar: "الخدمات", path: "/services" },
+    { name: "Portfolio", name_ar: "المعرض", path: "/portfolio" },
+    { name: "About", name_ar: "عن الشركة", path: "/about" },
+    { name: "Shop", name_ar: "المتجر", path: "/shop" },
+    { name: "Admin", name_ar: "الإدارة", path: "/product-management" },
+    { name: "News", name_ar: "الأخبار", path: "/news" },
+    { name: "Contact", name_ar: "اتصل بنا", path: "/contact" },
   ];
 
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "bg-white shadow-md py-2" 
-          : "bg-transparent py-5"
-      }`}
-      style={{ direction: isArabic ? "rtl" : "ltr" }}
-    >
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link to="/" className="flex items-center">
-          <div className="w-10 h-10 rounded-full bg-griffin-darkBlue flex items-center justify-center animate-spin">
-            <span className="text-white font-bold">G</span>
-          </div>
-          <span className="ml-2 text-griffin-darkBlue text-xl font-bold font-montserrat">
-            Griffin
-          </span>
-        </Link>
-
-        {/* Desktop Navigation */}
-        <div className={`hidden md:flex items-center space-x-6 ${isArabic ? 'space-x-reverse' : ''}`}>
-          {navItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className="navbar-link"
-            >
-              {item.label}
+    <nav className="bg-white shadow-md sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center">
+            <Link to="/" className="text-griffin-teal font-bold text-xl">
+              Griffin Tech
             </Link>
-          ))}
-          
-          <button 
-            onClick={onLanguageToggle}
-            className="px-3 py-1 border border-griffin-teal text-griffin-teal rounded hover:bg-griffin-teal hover:text-white transition-colors duration-200"
-          >
-            {isArabic ? "EN" : "AR"}
-          </button>
-          
-          <Link to="/shop" className="relative">
-            <ShoppingCart className="text-griffin-darkBlue hover:text-griffin-teal transition-colors" />
-            {cartCount > 0 && (
-              <Badge className="absolute -top-2 -right-2 bg-griffin-teal text-white">
-                {cartCount}
-              </Badge>
-            )}
-          </Link>
-        </div>
-
-        {/* Mobile Navigation Button */}
-        <div className="flex items-center md:hidden">
-          <Link to="/shop" className="relative mr-4">
-            <ShoppingCart className="text-griffin-darkBlue" />
-            {cartCount > 0 && (
-              <Badge className="absolute -top-2 -right-2 bg-griffin-teal text-white">
-                {cartCount}
-              </Badge>
-            )}
-          </Link>
-          
-          <button 
-            onClick={toggleMenu}
-            className="text-griffin-darkBlue focus:outline-none"
-          >
-            {isMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
-          </button>
+            <div className="hidden md:block">
+              <div className="ml-10 flex items-baseline space-x-4">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.path}
+                    className="text-gray-500 hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    {isArabic ? item.name_ar : item.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <div className="mr-4">
+              <Switch id="language-toggle" onCheckedChange={onLanguageToggle} />
+            </div>
+            <div className="mr-4 relative">
+              <Link to="/cart" className="text-gray-500 hover:text-gray-700">
+                <ShoppingCart className="h-6 w-6" />
+                {cartCount > 0 && (
+                  <span className="absolute top-[-6px] right-[-6px] bg-red-500 text-white rounded-full text-xs px-1.5 py-0.5">
+                    {cartCount}
+                  </span>
+                )}
+              </Link>
+            </div>
+            <div className="-mr-2 flex md:hidden">
+              <Drawer>
+                <DrawerTrigger asChild>
+                  <Button variant="outline" onClick={toggleMenu}>
+                    {isArabic ? "القائمة" : "Menu"}
+                  </Button>
+                </DrawerTrigger>
+                <DrawerContent className="text-left">
+                  <DrawerHeader>
+                    <DrawerTitle>Griffin Tech</DrawerTitle>
+                    <DrawerDescription>
+                      {isArabic
+                        ? "تصفح موقعنا"
+                        : "Navigate our website"}
+                    </DrawerDescription>
+                  </DrawerHeader>
+                  <div className="py-4">
+                    {navItems.map((item) => (
+                      <Link
+                        key={item.name}
+                        to={item.path}
+                        className="block px-4 py-2 text-gray-500 hover:bg-gray-200 rounded-md text-sm font-medium"
+                      >
+                        {isArabic ? item.name_ar : item.name}
+                      </Link>
+                    ))}
+                  </div>
+                  <DrawerFooter>
+                    <DrawerClose>
+                      <Button variant="outline">{isArabic ? "إغلاق" : "Close"}</Button>
+                    </DrawerClose>
+                  </DrawerFooter>
+                </DrawerContent>
+              </Drawer>
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {isMobile && isMenuOpen && (
-        <div className="fixed inset-0 top-16 bg-white z-40 animate-fade-in">
-          <div className="container mx-auto px-4 py-8 flex flex-col space-y-6">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className="text-xl text-griffin-darkBlue hover:text-griffin-teal transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-            
-            <button 
-              onClick={() => {
-                onLanguageToggle?.();
-                setIsMenuOpen(false);
-              }}
-              className="w-20 py-2 border border-griffin-teal text-griffin-teal rounded hover:bg-griffin-teal hover:text-white transition-colors duration-200"
-            >
-              {isArabic ? "English" : "العربية"}
-            </button>
-          </div>
-        </div>
-      )}
     </nav>
   );
 };

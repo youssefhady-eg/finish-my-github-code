@@ -13,6 +13,7 @@ import Shop from "./pages/Shop";
 import News from "./pages/News";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import ProductManagement from "./pages/ProductManagement";
 import WooCommerceSettings from "./components/WooCommerceSettings";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/about" element={<About />} />
             <Route path="/shop" element={<Shop />} />
+            <Route path="/product-management" element={<ProductManagement />} />
             <Route path="/news" element={<News />} />
             <Route path="/contact" element={<Contact />} />
           </Route>
