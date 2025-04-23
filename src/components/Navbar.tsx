@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart } from "lucide-react";
@@ -14,6 +13,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import CartDrawer from "@/components/CartDrawer";
 
 interface NavbarProps {
   isArabic: boolean;
@@ -23,6 +23,7 @@ interface NavbarProps {
 
 const Navbar = ({ isArabic, cartCount, onLanguageToggle }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -69,14 +70,23 @@ const Navbar = ({ isArabic, cartCount, onLanguageToggle }: NavbarProps) => {
               <Switch id="language-toggle" onCheckedChange={onLanguageToggle} />
             </div>
             <div className="mr-4 relative">
-              <Link to="/cart" className="text-gray-500 hover:text-gray-700">
+              <button
+                className="text-gray-500 hover:text-gray-700 relative"
+                onClick={() => setCartDrawerOpen(true)}
+                aria-label="Open cart"
+              >
                 <ShoppingCart className="h-6 w-6" />
                 {cartCount > 0 && (
                   <span className="absolute top-[-6px] right-[-6px] bg-red-500 text-white rounded-full text-xs px-1.5 py-0.5">
                     {cartCount}
                   </span>
                 )}
-              </Link>
+              </button>
+              <CartDrawer
+                open={cartDrawerOpen}
+                onOpenChange={setCartDrawerOpen}
+                onCartUpdate={() => {}} // Not needed, parent (Layout) handles cartCount
+              />
             </div>
             <div className="-mr-2 flex md:hidden">
               <Drawer>

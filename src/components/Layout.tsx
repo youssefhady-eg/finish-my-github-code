@@ -12,10 +12,13 @@ const Layout = () => {
   const toggleLanguage = () => {
     setIsArabic(!isArabic);
   };
-  
-  // Initialize cart count on load
+
   useEffect(() => {
     setCartCount(getCartCount());
+    // Listen to localStorage for cart changes (sync across tabs)
+    const syncCart = () => setCartCount(getCartCount());
+    window.addEventListener("storage", syncCart);
+    return () => window.removeEventListener("storage", syncCart);
   }, []);
 
   return (
@@ -23,16 +26,15 @@ const Layout = () => {
       <Navbar 
         isArabic={isArabic} 
         cartCount={cartCount} 
-        onLanguageToggle={toggleLanguage} 
+        onLanguageToggle={toggleLanguage}
       />
-      
       <main className="flex-grow">
         <Outlet context={{ isArabic, setCartCount }} />
       </main>
-      
       <Footer isArabic={isArabic} />
     </div>
   );
 };
 
 export default Layout;
+
