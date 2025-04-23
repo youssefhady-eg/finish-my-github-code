@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { getCartItems, removeFromCart, updateCartItemQuantity, getCartTotal, clearCart } from "@/services/cart";
-import { ShoppingCart, CreditCard, Wallet, Cash } from "lucide-react";
+import { ShoppingCart, CreditCard, Wallet, DollarSign } from "lucide-react";
 
 type PaymentMethod = "instapay" | "smart_wallet" | "cash";
 
@@ -40,7 +40,7 @@ const paymentMethods: {
     id: "cash",
     label: "Cash",
     description: "Pay upon delivery",
-    icon: <Cash className="w-4 h-4 mr-1" />,
+    icon: <DollarSign className="w-4 h-4 mr-1" />,
   }
 ];
 
