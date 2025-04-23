@@ -157,6 +157,22 @@ const WooCommerceSettings = ({ isArabic = false }: WooCommerceSettingsProps) => 
               <li>{isArabic ? "أدخل الاسم والأذونات ثم انقر على \"إنشاء مفتاح API\"" : "Enter a description, select read permissions, then click 'Generate API Key'"}</li>
             </ol>
           </div>
+          
+          <div className="p-4 bg-blue-50 border border-blue-200 rounded-md text-sm text-blue-800">
+            <p className="font-medium mb-2">
+              {isArabic ? "ملاحظة لاستضافة Oracle:" : "Note for Oracle hosting:"}
+            </p>
+            <p>
+              {isArabic 
+                ? "تأكد من تكوين CORS بشكل صحيح على خادم WordPress الخاص بك للسماح بالطلبات من خادم Oracle الخاص بك."
+                : "Make sure to properly configure CORS on your WordPress server to allow requests from your Oracle server."}
+            </p>
+            <p className="mt-2">
+              {isArabic 
+                ? "قد تحتاج إلى تثبيت إضافة CORS WP في WordPress أو تكوين الخادم يدويًا."
+                : "You may need to install a WP CORS plugin in WordPress or configure your server manually."}
+            </p>
+          </div>
         </div>
         
         <DialogFooter>

@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart } from "lucide-react";
@@ -37,7 +38,6 @@ const Navbar = ({ isArabic, cartCount, onLanguageToggle }: NavbarProps) => {
     { name: "Portfolio", name_ar: "المعرض", path: "/portfolio" },
     { name: "About", name_ar: "عن الشركة", path: "/about" },
     { name: "Shop", name_ar: "المتجر", path: "/shop" },
-    { name: "Admin", name_ar: "الإدارة", path: "/product-management" },
     { name: "News", name_ar: "الأخبار", path: "/news" },
     { name: "Contact", name_ar: "اتصل بنا", path: "/contact" },
   ];
