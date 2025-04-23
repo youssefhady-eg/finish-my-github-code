@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import { getCartCount, addToCart } from "@/services/cart";
@@ -10,7 +9,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { ShoppingCart, Check, ChevronRight } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -24,13 +23,11 @@ const Shop = () => {
   const [selectedVariants, setSelectedVariants] = useState<Record<string, string>>({});
   const { toast } = useToast();
 
-  // Update cart count on page load
   useEffect(() => {
     const count = getCartCount();
     setCartCount(count);
   }, [setCartCount]);
 
-  // Handle variant selection
   const handleVariantChange = (productId: string, variantId: string) => {
     setSelectedVariants(prev => ({
       ...prev,
@@ -38,7 +35,6 @@ const Shop = () => {
     }));
   };
 
-  // Handle add to cart
   const handleAddToCart = async (product: any) => {
     try {
       const variantId = selectedVariants[product.id] || product.variants[0].id;
@@ -46,8 +42,6 @@ const Shop = () => {
       
       if (!variant) return;
       
-      // In a real implementation, this would add to WooCommerce cart
-      // For now, we'll use our local cart function but with data from WooCommerce
       const cartItem = await addToWooCart(product.id, variant.id);
       addToCart(product, variant);
       
@@ -76,7 +70,6 @@ const Shop = () => {
     }
   };
 
-  // Get related products
   const getRelatedProducts = (product: any) => {
     if (!product || !product.relatedProductIds || !products) return [];
     return product.relatedProductIds
@@ -84,7 +77,6 @@ const Shop = () => {
       .filter(Boolean);
   };
 
-  // Show loading state
   if (isLoading) {
     return (
       <>
@@ -130,7 +122,6 @@ const Shop = () => {
     );
   }
 
-  // Show error state
   if (error || !products) {
     return (
       <>
@@ -174,10 +165,7 @@ const Shop = () => {
     );
   }
 
-  // Fallback to database products if no WooCommerce products
   if (!products || products.length === 0) {
-    // This is where we would normally import the static products from database.ts
-    // But for this implementation, we'll show a message instead
     return (
       <>
         <PageHeader
@@ -230,7 +218,6 @@ const Shop = () => {
               
               <CardContent className="flex-grow">
                 <div className="space-y-4">
-                  {/* Variant Selection */}
                   {product.variants && product.variants.length > 1 && (
                     <div>
                       <label className="block mb-2 text-sm font-medium">
@@ -254,7 +241,6 @@ const Shop = () => {
                     </div>
                   )}
                   
-                  {/* Features */}
                   {product.features && product.features.length > 0 && (
                     <div>
                       <h4 className="font-medium mb-2">
@@ -277,7 +263,6 @@ const Shop = () => {
               </CardContent>
               
               <CardFooter className="flex flex-col space-y-4 border-t pt-4">
-                {/* Price */}
                 <div className="flex justify-between items-center w-full">
                   <span className="text-lg font-bold">
                     ${(product.variants.find((v: any) => v.id === (selectedVariants[product.id] || product.variants[0].id)) || product.variants[0]).price}
@@ -291,7 +276,6 @@ const Shop = () => {
                   </Button>
                 </div>
                 
-                {/* Related Products */}
                 {getRelatedProducts(product).length > 0 && (
                   <div className="w-full">
                     <h4 className="text-sm font-medium mb-2">
