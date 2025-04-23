@@ -3,7 +3,6 @@ import { useOutletContext } from "react-router-dom";
 import PageHeader from "@/components/PageHeader";
 import Section from "@/components/Section";
 import ServiceCard from "@/components/ServiceCard";
-import { services as localServices } from "@/services/database";
 import { useWooProducts } from "@/hooks/useWooProducts";
 
 /**
@@ -24,20 +23,17 @@ const Services = () => {
       ? wooServices.map((item: any) => ({
           id: item.id,
           slug: "woo-product-" + item.id,
-          title: item.name,
-          title_ar: item.name, // WooCommerce API probably doesn't have Arabic, fallback to English
-          description: item.short_description || item.description || "",
-          description_ar: item.short_description || item.description || "",
-          imageSrc: item.images && item.images.length > 0 ? item.images[0].src : "/placeholder.svg",
+          title: item.title,
+          title_ar: item.title_ar,
+          description: item.description || "",
+          description_ar: item.description_ar || "",
+          imageSrc: item.imageSrc || "/placeholder.svg",
           reliabilityPercent: 90, // Default/fake value for WooCommerce services
         }))
       : [];
 
-  // Merge local and Woo "services"
-  const allServices = [
-    ...localServices,
-    ...wooServiceCards
-  ];
+  // Show ONLY WooCommerce services, ALL sourced from WordPress/WooCommerce
+  const allServices = wooServiceCards;
 
   return (
     <div>
@@ -74,4 +70,3 @@ const Services = () => {
 };
 
 export default Services;
-

@@ -24,7 +24,7 @@ const ServiceCard = ({
 
   return (
     <div 
-      className={`service-card ${isHovered ? 'shadow-xl' : 'shadow-md'}`}
+      className={`service-card transition-transform duration-300 ${isHovered ? 'scale-105 shadow-xl' : 'scale-100 shadow-md'}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{ direction: isArabic ? 'rtl' : 'ltr' }}
