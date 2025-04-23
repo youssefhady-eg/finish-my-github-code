@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
 
 @tailwind base;
@@ -113,7 +114,8 @@
   }
   
   .service-card {
-    @apply bg-white rounded-lg p-6 shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02] hover:-rotate-1;
+    @apply bg-white rounded-lg p-6 shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.04];
+    /* Remove rotate on hover and focus on smooth scale for zoom effect */
   }
 
   .navbar-link {

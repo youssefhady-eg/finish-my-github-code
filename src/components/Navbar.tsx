@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart } from "lucide-react";
@@ -49,7 +50,7 @@ const Navbar = ({ isArabic, cartCount, onLanguageToggle }: NavbarProps) => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="text-griffin-teal font-bold text-xl">
-              Griffin Tech
+              Griffin
             </Link>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
@@ -97,7 +98,7 @@ const Navbar = ({ isArabic, cartCount, onLanguageToggle }: NavbarProps) => {
                 </DrawerTrigger>
                 <DrawerContent className="text-left">
                   <DrawerHeader>
-                    <DrawerTitle>Griffin Tech</DrawerTitle>
+                    <DrawerTitle>Griffin</DrawerTitle>
                     <DrawerDescription>
                       {isArabic
                         ? "تصفح موقعنا"
