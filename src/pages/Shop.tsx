@@ -42,7 +42,12 @@ const Shop = () => {
       
       if (!variant) return;
       
-      const cartItem = await addToWooCart(product.id, variant.id);
+      try {
+        await addToWooCart(product.id, variant.id);
+      } catch (wooError) {
+        console.log("WooCommerce cart integration skipped:", wooError);
+      }
+      
       addToCart(product, variant);
       
       const newCartCount = getCartCount();
