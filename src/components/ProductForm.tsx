@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { saveProduct } from "@/services/productManagement";
+import { saveProduct, ProductType } from "@/services/productManagement";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -12,7 +12,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { X, Save } from "lucide-react";
 
 interface ProductFormProps {
-  product?: any;
+  product?: ProductType | null;
   onClose: () => void;
   onSuccess: (action: string) => void;
   isArabic: boolean;
@@ -55,7 +55,7 @@ const ProductForm = ({ product, onClose, onSuccess, isArabic }: ProductFormProps
       title_ar: product?.title_ar || '',
       description: product?.description || '',
       description_ar: product?.description_ar || '',
-      price: product?.variants?.[0]?.price?.toString() || '',
+      price: product?.price?.toString() || '',
       imageSrc: product?.imageSrc || 'https://via.placeholder.com/300',
       features: product?.features?.join('\n') || '',
       features_ar: product?.features_ar?.join('\n') || '',
@@ -69,13 +69,18 @@ const ProductForm = ({ product, onClose, onSuccess, isArabic }: ProductFormProps
       const features = values.features.split('\n').filter(f => f.trim() !== '');
       const features_ar = values.features_ar.split('\n').filter(f => f.trim() !== '');
       
-      // Create product object
-      const productData = {
-        ...values,
+      // Create product object with required fields ensuring they're not optional
+      const productData: ProductType = {
         id: values.id || `product_${Date.now()}`,
+        title: values.title,
+        title_ar: values.title_ar,
+        description: values.description,
+        description_ar: values.description_ar,
         price: parseFloat(values.price),
+        imageSrc: values.imageSrc,
         features,
         features_ar,
+        categoryId: values.categoryId || 'general',
         variants: [
           {
             id: 'default',
