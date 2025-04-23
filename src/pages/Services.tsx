@@ -4,7 +4,6 @@ import PageHeader from "@/components/PageHeader";
 import Section from "@/components/Section";
 import ServiceCard from "@/components/ServiceCard";
 import { useWooProducts } from "@/hooks/useWooProducts";
-import { useEffect, useState } from "react";
 
 /**
  * Outlet context for language and cart controls
@@ -72,26 +71,25 @@ const Services = () => {
   const { isArabic } = useOutletContext<OutletContextType>();
   const { data: wooServices, isLoading, error } = useWooProducts();
 
-  // 2. Map WooCommerce products to ServiceCard data
-  const wooServiceCards =
-    wooServices && Array.isArray(wooServices)
-      ? wooServices
-          // Remove any Woo service with the same slug or id as a core service
-          .filter((item: any) => !CORE_SERVICES.some(core => core.slug === ("woo-product-" + item.id) || core.id === item.id))
-          .map((item: any) => ({
-            id: "woo-" + item.id,
-            slug: "woo-product-" + item.id,
-            title: item.title,
-            title_ar: item.title_ar,
-            description: item.description || "",
-            description_ar: item.description_ar || "",
-            imageSrc: item.imageSrc || "/placeholder.svg",
-            reliabilityPercent: 90, // Default/fake value for WooCommerce services
-          }))
-      : [];
+  // Show WooCommerce products ONLY if WooCommerce is configured and has products (don't fall back to demo/local products)
+  // We'll assume real WooCommerce products have a numeric string ID.
+  const validWooServices = Array.isArray(wooServices) && wooServices.length > 0
+    ? wooServices.filter(
+        (item: any) => !CORE_SERVICES.some(core => core.slug === ("woo-product-" + item.id) || core.id === item.id)
+      )
+    : [];
 
-  // 3. Always show core services, then Woo services
-  const allServices = [...CORE_SERVICES, ...wooServiceCards];
+  // Always show core services, plus Woo services only if available from WooCommerce
+  const allServices = [...CORE_SERVICES, ...validWooServices.map((item: any) => ({
+    id: "woo-" + item.id,
+    slug: "woo-product-" + item.id,
+    title: item.title,
+    title_ar: item.title_ar,
+    description: item.description || "",
+    description_ar: item.description_ar || "",
+    imageSrc: item.imageSrc || "/placeholder.svg",
+    reliabilityPercent: 90,
+  }))];
 
   return (
     <div>
@@ -102,9 +100,9 @@ const Services = () => {
       />
 
       <Section isArabic={isArabic}>
-        {isLoading && wooServiceCards.length === 0 ? (
+        {isLoading && validWooServices.length === 0 ? (
           <div className="text-center py-8">{isArabic ? "جاري التحميل..." : "Loading..."}</div>
-        ) : error && wooServiceCards.length === 0 ? (
+        ) : error && validWooServices.length === 0 ? (
           <div className="text-center py-8 text-red-500">{isArabic ? "خطأ في تحميل الخدمات" : "Failed to load services"}</div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -128,4 +126,3 @@ const Services = () => {
 };
 
 export default Services;
-
