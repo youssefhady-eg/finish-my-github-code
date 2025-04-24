@@ -7,6 +7,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Facebook, Instagram, Tiktok } from "lucide-react";
+import { toast } from "@/hooks/use-toast";
 
 type OutletContextType = {
   isArabic: boolean;
@@ -15,6 +17,38 @@ type OutletContextType = {
 
 const News = () => {
   const { isArabic } = useOutletContext<OutletContextType>();
+
+  const handleShare = (platform: string, item: any) => {
+    const url = window.location.origin + `/news/${item.slug}`;
+    const text = isArabic ? item.title_ar : item.title;
+    
+    let shareUrl = '';
+    switch (platform) {
+      case 'facebook':
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+        break;
+      case 'instagram':
+        // Instagram doesn't have a direct sharing URL, we'll copy the link instead
+        navigator.clipboard.writeText(url);
+        toast({
+          title: isArabic ? "تم النسخ" : "Link Copied",
+          description: isArabic ? "يمكنك الآن مشاركة الرابط على Instagram" : "You can now share the link on Instagram",
+        });
+        return;
+      case 'tiktok':
+        // TikTok doesn't have a direct sharing URL, we'll copy the link instead
+        navigator.clipboard.writeText(url);
+        toast({
+          title: isArabic ? "تم النسخ" : "Link Copied",
+          description: isArabic ? "يمكنك الآن مشاركة الرابط على TikTok" : "You can now share the link on TikTok",
+        });
+        return;
+    }
+    
+    if (shareUrl) {
+      window.open(shareUrl, '_blank', 'width=600,height=400');
+    }
+  };
 
   return (
     <div>
@@ -53,7 +87,33 @@ const News = () => {
                   </p>
                 </CardContent>
                 
-                <CardFooter>
+                <CardFooter className="flex justify-between items-center">
+                  <div className="flex gap-2">
+                    <Button 
+                      variant="outline" 
+                      size="icon"
+                      onClick={() => handleShare('facebook', item)}
+                      title={isArabic ? "مشاركة على Facebook" : "Share on Facebook"}
+                    >
+                      <Facebook className="h-4 w-4" />
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      size="icon"
+                      onClick={() => handleShare('instagram', item)}
+                      title={isArabic ? "مشاركة على Instagram" : "Share on Instagram"}
+                    >
+                      <Instagram className="h-4 w-4" />
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      size="icon"
+                      onClick={() => handleShare('tiktok', item)}
+                      title={isArabic ? "مشاركة على TikTok" : "Share on TikTok"}
+                    >
+                      <Tiktok className="h-4 w-4" />
+                    </Button>
+                  </div>
                   <Link to={`/news/${item.slug}`}>
                     <Button variant="outline" className="flex items-center gap-2">
                       {isArabic ? "اقرأ المزيد" : "Read More"}
