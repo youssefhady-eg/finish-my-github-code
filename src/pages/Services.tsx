@@ -1,4 +1,3 @@
-
 import { useOutletContext } from "react-router-dom";
 import PageHeader from "@/components/PageHeader";
 import Section from "@/components/Section";
