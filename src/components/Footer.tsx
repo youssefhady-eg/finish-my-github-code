@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Linkedin, Twitter, Facebook, Instagram, Tiktok } from "lucide-react";
+import { Linkedin, Twitter, Facebook, Instagram, Share2 } from "lucide-react";
 
 type FooterProps = {
   isArabic?: boolean;
@@ -59,7 +59,7 @@ const Footer = ({ isArabic = false }: FooterProps) => {
                 <Instagram size={20} />
               </a>
               <a href="https://tiktok.com/@griffin" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="footer-social">
-                <Tiktok size={20} />
+                <Share2 size={20} />
               </a>
             </div>
           </div>
