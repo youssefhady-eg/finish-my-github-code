@@ -1,3 +1,4 @@
+
 // This file simulates a Bubble database with collections for our application
 
 // Service Types
@@ -414,7 +415,7 @@ export const faqs: FAQ[] = [
     question: "How fast is VPN setup?",
     question_ar: "ما مدى سرعة إعداد VPN؟",
     answer: "Our VPN setup typically takes 1-2 business days for basic configurations and 3-5 days for complex enterprise implementations.",
-    answer_ar: "عادة ما يستغرق إعداد VPN لدينا 1-2 يوم عمل للتكوينات الأسا��ية و 3-5 أيام للتنفيذات المؤسسية المعقدة."
+    answer_ar: "عادة ما يستغرق إعداد VPN لدينا 1-2 يوم عمل للتكوينات الأساسية و 3-5 أيام للتنفيذات المؤسسية المعقدة."
   },
   {
     id: "2",
@@ -425,7 +426,7 @@ export const faqs: FAQ[] = [
   },
   {
     id: "3",
-: "What payment methods do you accept?",
+    question: "What payment methods do you accept?",
     question_ar: "ما هي طرق الدفع التي تقبلونها؟",
     answer: "We accept credit cards, bank transfers, and PayPal. For large projects, we also offer flexible payment plans.",
     answer_ar: "نقبل بطاقات الائتمان والتحويلات المصرفية وPayPal. للمشاريع الكبيرة، نقدم أيضًا خطط دفع مرنة."
@@ -499,7 +500,7 @@ export interface Translation {
 
 export const translations: Translation[] = [
   { key: "shop_now", english: "Shop Now", arabic: "تسوق الآن" },
-  { key: "learn_more", english: "Learn More", arabic: "اعر�� المزيد" },
+  { key: "learn_more", english: "Learn More", arabic: "اعرف المزيد" },
   { key: "our_services", english: "Our Services", arabic: "خدماتنا" },
   { key: "success_stories", english: "Success Stories", arabic: "قصص النجاح" },
   { key: "read_more", english: "Read More", arabic: "اقرأ المزيد" },
