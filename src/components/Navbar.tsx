@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, Menu } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import {
@@ -31,7 +31,7 @@ const Navbar = ({ isArabic, cartCount, onLanguageToggle }: NavbarProps) => {
     return location.pathname === path;
   };
 
-  // Add the missing toggleMenu function
+  // Define toggleMenu function for drawer control
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -99,8 +99,9 @@ const Navbar = ({ isArabic, cartCount, onLanguageToggle }: NavbarProps) => {
             <div className="-mr-2 flex md:hidden">
               <Drawer>
                 <DrawerTrigger asChild>
-                  <Button variant="outline" onClick={toggleMenu}>
-                    {isArabic ? "القائمة" : "Menu"}
+                  <Button variant="outline" size="icon">
+                    <Menu />
+                    <span className="sr-only">{isArabic ? "القائمة" : "Menu"}</span>
                   </Button>
                 </DrawerTrigger>
                 <DrawerContent className="text-left">
