@@ -1,3 +1,4 @@
+
 import { useOutletContext } from "react-router-dom";
 import PageHeader from "@/components/PageHeader";
 import Section from "@/components/Section";
@@ -88,7 +89,7 @@ const Portfolio = () => {
             
             <div className="relative z-10">
               <div className={`flex items-center mb-12 ${isArabic ? 'flex-row-reverse' : ''}`}>
-                <div className={`w-1/2 ${isArabic ? 'pr-8' : 'pr-8 text-right'}`}>
+                <div className={`w-1/2 ${isArabic ? 'pr-8 text-right' : 'pr-8 text-right'}`}>
                   <h4 className={`font-bold text-griffin-darkBlue ${isArabic ? 'text-xl mb-2' : ''}`}>
                     {isArabic ? "تقييم الاحتياجات" : "Needs Assessment"}
                   </h4>
@@ -110,7 +111,7 @@ const Portfolio = () => {
               </div>
               
               <div className={`flex items-center mb-12 ${isArabic ? 'flex-row-reverse' : ''}`}>
-                <div className={`w-1/2 ${isArabic ? 'pr-8' : 'pr-8 text-right'}`}>
+                <div className={`w-1/2 ${isArabic ? 'pr-8 text-right' : 'pr-8 text-right'}`}>
                   <div className={`text-griffin-teal ${isArabic ? 'text-lg' : 'text-sm'}`}>
                     {isArabic ? "IVR: توجيه الاتصال الذكي" : "IVR: Intelligent Call Routing"}
                   </div>
@@ -118,7 +119,7 @@ const Portfolio = () => {
                 <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-griffin-teal rounded-full">
                   <div className="w-10 h-10 bg-griffin-teal bg-opacity-20 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-ping"></div>
                 </div>
-                <div className={`w-1/2 ${isArabic ? 'pl-8' : 'pl-8'}`}>
+                <div className={`w-1/2 ${isArabic ? 'pl-8 text-right' : 'pl-8'}`}>
                   <h4 className={`font-bold text-griffin-darkBlue ${isArabic ? 'text-xl mb-2' : ''}`}>
                     {isArabic ? "التنفيذ" : "Implementation"}
                   </h4>
@@ -129,7 +130,7 @@ const Portfolio = () => {
               </div>
               
               <div className={`flex items-center ${isArabic ? 'flex-row-reverse' : ''}`}>
-                <div className={`w-1/2 ${isArabic ? 'pr-8' : 'pr-8 text-right'}`}>
+                <div className={`w-1/2 ${isArabic ? 'pr-8 text-right' : 'pr-8 text-right'}`}>
                   <h4 className={`font-bold text-griffin-darkBlue ${isArabic ? 'text-xl mb-2' : ''}`}>
                     {isArabic ? "القياس والتحسين" : "Measurement & Optimization"}
                   </h4>
