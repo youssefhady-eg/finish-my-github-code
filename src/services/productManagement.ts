@@ -114,139 +114,199 @@ export async function initializeDemoProducts(): Promise<void> {
   if (products.length === 0) {
     const demoProducts: ProductType[] = [
       {
-        id: "product_1",
-        title: "Professional Website Package",
-        title_ar: "باقة الموقع الاحترافي",
-        description: "Complete website solution for businesses with responsive design, CMS integration, and SEO optimization.",
-        description_ar: "حل موقع ويب كامل للشركات مع تصميم متجاوب وتكامل نظام إدارة المحتوى وتحسين محركات البحث.",
-        price: 1499,
-        imageSrc: "https://via.placeholder.com/300x200/3498db/ffffff?text=Website+Package",
+        id: "vpn_service",
+        title: "VPN Installation Package",
+        title_ar: "باقة تركيب VPN",
+        description: "Complete VPN solution with setup, configuration, and support.",
+        description_ar: "حل VPN كامل مع الإعداد والتكوين والدعم.",
+        price: 299,
+        imageSrc: "/vpn.svg",
         features: [
-          "Responsive design for all devices",
-          "Content Management System",
-          "SEO optimization",
-          "5 pages included",
-          "3 months support"
+          "Secure remote access setup",
+          "Multiple device support",
+          "24/7 technical support",
+          "Regular security updates",
+          "Network monitoring"
         ],
         features_ar: [
-          "تصميم متجاوب لجميع الأجهزة",
-          "نظام إدارة المحتوى",
-          "تحسين محركات البحث",
-          "يتضمن 5 صفحات",
-          "دعم لمدة 3 أشهر"
+          "إعداد وصول عن بُعد آمن",
+          "دعم الأجهزة المتعددة",
+          "دعم فني على مدار الساعة",
+          "تحديثات أمنية منتظمة",
+          "مراقبة الشبكة"
         ],
-        categoryId: "websites",
+        categoryId: "vpn",
         variants: [
           {
-            id: "basic",
-            name: "Basic Package",
-            name_ar: "الباقة الأساسية",
-            price: 999
+            id: "basic_vpn",
+            name: "Basic VPN",
+            name_ar: "VPN أساسي",
+            price: 299
           },
           {
-            id: "pro",
-            name: "Professional Package",
-            name_ar: "الباقة الاحترافية",
-            price: 1499
-          },
-          {
-            id: "premium",
-            name: "Premium Package",
-            name_ar: "الباقة المتميزة",
-            price: 2499
+            id: "business_vpn",
+            name: "Business VPN",
+            name_ar: "VPN للأعمال",
+            price: 499
           }
         ],
-        relatedProductIds: ["product_2", "product_3"]
+        relatedProductIds: ["callcenter_service", "network_service"]
       },
       {
-        id: "product_2",
-        title: "E-commerce Solution",
-        title_ar: "حل التجارة الإلكترونية",
-        description: "Complete e-commerce platform with product management, payment processing, and inventory tracking.",
-        description_ar: "منصة تجارة إلكترونية كاملة مع إدارة المنتجات ومعالجة المدفوعات وتتبع المخزون.",
-        price: 2999,
-        imageSrc: "https://via.placeholder.com/300x200/e74c3c/ffffff?text=E-commerce",
+        id: "callcenter_service",
+        title: "Call Center Setup",
+        title_ar: "إعداد مركز الاتصال",
+        description: "Professional call center system implementation with VoIP integration.",
+        description_ar: "تنفيذ نظام مركز اتصال احترافي مع تكامل VoIP.",
+        price: 1999,
+        imageSrc: "/callcenter.svg",
         features: [
-          "Product management system",
-          "Secure payment gateway",
-          "Inventory tracking",
-          "Customer accounts",
-          "Order management"
+          "VoIP system setup",
+          "Call routing configuration",
+          "Agent training",
+          "Quality monitoring tools",
+          "Analytics dashboard"
         ],
         features_ar: [
-          "نظام إدارة المنتجات",
-          "بوابة دفع آمنة",
-          "تتبع المخزون",
-          "حسابات العملاء",
-          "إدارة الطلبات"
+          "إعداد نظام VoIP",
+          "تكوين توجيه المكالمات",
+          "تدريب الموظفين",
+          "أدوات مراقبة الجودة",
+          "لوحة تحليلات"
         ],
-        categoryId: "ecommerce",
+        categoryId: "callcenter",
         variants: [
           {
-            id: "starter",
-            name: "Starter Store",
-            name_ar: "المتجر المبتدئ",
+            id: "small_cc",
+            name: "Small Team",
+            name_ar: "فريق صغير",
             price: 1999
           },
           {
-            id: "business",
-            name: "Business Store",
-            name_ar: "متجر الأعمال",
-            price: 2999
-          },
-          {
-            id: "enterprise",
-            name: "Enterprise Store",
-            name_ar: "متجر المؤسسات",
-            price: 4999
+            id: "large_cc",
+            name: "Enterprise",
+            name_ar: "مؤسسات",
+            price: 3999
           }
         ],
-        relatedProductIds: ["product_1", "product_3"]
+        relatedProductIds: ["crm_service", "vpn_service"]
       },
       {
-        id: "product_3",
-        title: "Mobile App Development",
-        title_ar: "تطوير تطبيقات الجوال",
-        description: "Custom mobile application development for iOS and Android platforms with backend integration.",
-        description_ar: "تطوير تطبيقات الجوال المخصصة لمنصات iOS و Android مع تكامل الواجهة الخلفية.",
-        price: 4999,
-        imageSrc: "https://via.placeholder.com/300x200/2ecc71/ffffff?text=Mobile+Apps",
+        id: "crm_service",
+        title: "CRM Implementation",
+        title_ar: "تنفيذ نظام CRM",
+        description: "Custom CRM solution implementation with training and support.",
+        description_ar: "تنفيذ حل CRM مخصص مع التدريب والدعم.",
+        price: 1499,
+        imageSrc: "/crm.svg",
         features: [
-          "Cross-platform development",
-          "Native iOS and Android apps",
-          "Backend API integration",
-          "User authentication",
-          "Push notifications"
+          "Custom workflow setup",
+          "Data migration",
+          "User training",
+          "Integration support",
+          "Reporting setup"
         ],
         features_ar: [
-          "تطوير متعدد المنصات",
-          "تطبيقات iOS و Android الأصلية",
-          "تكامل واجهة برمجة التطبيقات الخلفية",
-          "مصادقة المستخدم",
-          "إشعارات الدفع"
+          "إعداد سير العمل المخصص",
+          "ترحيل البيانات",
+          "تدريب المستخدمين",
+          "دعم التكامل",
+          "إعداد التقارير"
         ],
-        categoryId: "mobile",
+        categoryId: "crm",
         variants: [
           {
-            id: "mvp",
-            name: "MVP Version",
-            name_ar: "نسخة الحد الأدنى من المنتج",
-            price: 3499
+            id: "starter_crm",
+            name: "Starter CRM",
+            name_ar: "CRM مبتدئ",
+            price: 1499
           },
           {
-            id: "standard",
-            name: "Standard App",
-            name_ar: "التطبيق القياسي",
-            price: 4999
+            id: "premium_crm",
+            name: "Premium CRM",
+            name_ar: "CRM متميز",
+            price: 2499
+          }
+        ],
+        relatedProductIds: ["callcenter_service", "pos_service"]
+      },
+      {
+        id: "pos_service",
+        title: "POS System Setup",
+        title_ar: "إعداد نظام نقاط البيع",
+        description: "Complete point-of-sale system with hardware and software setup.",
+        description_ar: "نظام نقاط بيع كامل مع إعداد الأجهزة والبرامج.",
+        price: 2499,
+        imageSrc: "/pos.svg",
+        features: [
+          "Hardware installation",
+          "Software configuration",
+          "Staff training",
+          "Inventory setup",
+          "Payment integration"
+        ],
+        features_ar: [
+          "تركيب الأجهزة",
+          "تكوين البرامج",
+          "تدريب الموظفين",
+          "إعداد المخزون",
+          "تكامل المدفوعات"
+        ],
+        categoryId: "pos",
+        variants: [
+          {
+            id: "basic_pos",
+            name: "Basic POS",
+            name_ar: "نقاط بيع أساسية",
+            price: 2499
           },
           {
-            id: "premium",
-            name: "Premium App",
-            name_ar: "التطبيق المتميز",
+            id: "advanced_pos",
+            name: "Advanced POS",
+            name_ar: "نقاط بيع متقدمة",
+            price: 3999
+          }
+        ],
+        relatedProductIds: ["network_service", "crm_service"]
+      },
+      {
+        id: "network_service",
+        title: "Network Design & Implementation",
+        title_ar: "تصميم وتنفيذ الشبكات",
+        description: "Professional network infrastructure design and setup.",
+        description_ar: "تصميم وإعداد البنية التحتية للشبكات بشكل احترافي.",
+        price: 3999,
+        imageSrc: "/network.svg",
+        features: [
+          "Network assessment",
+          "Infrastructure design",
+          "Security implementation",
+          "Performance optimization",
+          "Documentation"
+        ],
+        features_ar: [
+          "تقييم الشبكة",
+          "تصميم البنية التحتية",
+          "تنفيذ الأمان",
+          "تحسين الأداء",
+          "التوثيق"
+        ],
+        categoryId: "network",
+        variants: [
+          {
+            id: "smb_network",
+            name: "SMB Network",
+            name_ar: "شبكة الشركات الصغيرة",
+            price: 3999
+          },
+          {
+            id: "enterprise_network",
+            name: "Enterprise Network",
+            name_ar: "شبكة المؤسسات",
             price: 7999
           }
         ],
-        relatedProductIds: ["product_1", "product_2"]
+        relatedProductIds: ["vpn_service", "pos_service"]
       }
     ];
     
@@ -257,3 +317,4 @@ export async function initializeDemoProducts(): Promise<void> {
 
 // Initialize demo products when the service is imported
 initializeDemoProducts();
+
