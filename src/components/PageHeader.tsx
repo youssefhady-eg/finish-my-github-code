@@ -22,12 +22,20 @@ const PageHeader = ({
         className="container mx-auto px-4 text-center"
         style={{ direction: isArabic ? 'rtl' : 'ltr' }}
       >
-        <h1 className="text-4xl md:text-5xl font-bold font-montserrat mb-4">
+        <h1 className={`mb-4 ${
+          isArabic 
+            ? 'font-arabic text-5xl md:text-6xl' 
+            : 'font-montserrat text-4xl md:text-5xl'
+        } font-bold`}>
           {title}
         </h1>
         
         {subtitle && (
-          <p className="text-lg md:text-xl font-fira text-griffin-teal mb-8">
+          <p className={`mb-8 ${
+            isArabic 
+              ? 'font-arabic text-xl md:text-2xl' 
+              : 'font-fira text-lg md:text-xl'
+          } text-griffin-teal`}>
             {subtitle}
           </p>
         )}

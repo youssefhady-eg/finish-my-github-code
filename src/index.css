@@ -1,5 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&family=Noto+Kufi+Arabic:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -93,6 +92,26 @@
 
   body {
     @apply bg-background text-foreground font-roboto;
+  }
+
+  [dir="rtl"] {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+  }
+
+  [dir="rtl"] h1 {
+    @apply text-4xl md:text-5xl font-bold;
+  }
+
+  [dir="rtl"] h2 {
+    @apply text-3xl md:text-4xl font-bold;
+  }
+
+  [dir="rtl"] p {
+    @apply text-lg leading-relaxed;
+  }
+
+  [dir="rtl"] .font-arabic {
+    font-family: 'Noto Kufi Arabic', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {

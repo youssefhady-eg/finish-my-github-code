@@ -1,6 +1,5 @@
-
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ShoppingCart } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
@@ -25,13 +24,10 @@ interface NavbarProps {
 const Navbar = ({ isArabic, cartCount, onLanguageToggle }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
+  const location = useLocation();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
+  const isActivePage = (path: string) => {
+    return location.pathname === path;
   };
 
   const navItems = [
@@ -49,16 +45,21 @@ const Navbar = ({ isArabic, cartCount, onLanguageToggle }: NavbarProps) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="text-griffin-teal font-bold text-xl">
+            <Link to="/" className={`text-griffin-teal font-bold text-xl ${isArabic ? 'font-arabic text-2xl' : ''}`}>
               Griffin
             </Link>
             <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
+              <div className="ml-10 flex items-baseline space-x-4" dir={isArabic ? 'rtl' : 'ltr'}>
                 {navItems.map((item) => (
                   <Link
                     key={item.name}
                     to={item.path}
-                    className="text-gray-500 hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium"
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200
+                      ${isActivePage(item.path) 
+                        ? 'bg-griffin-teal text-white' 
+                        : 'text-gray-500 hover:bg-gray-200'}
+                      ${isArabic ? 'font-arabic text-base mx-2' : ''}
+                    `}
                   >
                     {isArabic ? item.name_ar : item.name}
                   </Link>
