@@ -22,7 +22,7 @@ const CORE_SERVICES = [
     title_ar: "تركيب VPN",
     description: "Secure VPN solution for your business: remote access, site-to-site, and mobile device support.",
     description_ar: "حل VPN آمن لعملك: وصول عن بُعد وربط بين المواقع ودعم للأجهزة المحمولة.",
-    imageSrc: "/vpn.svg", // Change to your own asset if available
+    imageSrc: "/vpn.svg", 
     reliabilityPercent: 98,
   },
   {
@@ -126,3 +126,4 @@ const Services = () => {
 };
 
 export default Services;
+
