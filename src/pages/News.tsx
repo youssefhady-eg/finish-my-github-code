@@ -5,9 +5,9 @@ import Section from "@/components/Section";
 import { newsItems } from "@/services/database";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Share2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Tiktok } from "lucide-react";
+import { Facebook, Instagram } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
 type OutletContextType = {
@@ -111,7 +111,7 @@ const News = () => {
                       onClick={() => handleShare('tiktok', item)}
                       title={isArabic ? "مشاركة على TikTok" : "Share on TikTok"}
                     >
-                      <Tiktok className="h-4 w-4" />
+                      <Share2 className="h-4 w-4" />
                     </Button>
                   </div>
                   <Link to={`/news/${item.slug}`}>
