@@ -1,4 +1,3 @@
-
 import { useOutletContext } from "react-router-dom";
 import PageHeader from "@/components/PageHeader";
 import Section from "@/components/Section";
@@ -89,11 +88,11 @@ const Portfolio = () => {
             
             <div className="relative z-10">
               <div className={`flex items-center mb-12 ${isArabic ? 'flex-row-reverse' : ''}`}>
-                <div className={`w-1/2 ${isArabic ? 'pl-8 text-right' : 'pr-8 text-right'}`}>
-                  <h4 className={`font-bold text-griffin-darkBlue ${isArabic ? 'text-xl' : ''}`}>
+                <div className={`w-1/2 ${isArabic ? 'pr-8' : 'pr-8 text-right'}`}>
+                  <h4 className={`font-bold text-griffin-darkBlue ${isArabic ? 'text-xl mb-2' : ''}`}>
                     {isArabic ? "تقييم الاحتياجات" : "Needs Assessment"}
                   </h4>
-                  <p className={`text-gray-600 ${isArabic ? 'text-base mt-2' : 'text-sm'}`}>
+                  <p className={`${isArabic ? 'text-base leading-relaxed' : 'text-sm'} text-gray-600`}>
                     {isArabic 
                       ? "تحليل الأنظمة الحالية وتحديد متطلبات العمل"
                       : "Analyzing existing systems and identifying business requirements"
@@ -103,48 +102,46 @@ const Portfolio = () => {
                 <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-griffin-teal rounded-full">
                   <div className="w-10 h-10 bg-griffin-teal bg-opacity-20 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-ping"></div>
                 </div>
-                <div className={`w-1/2 ${isArabic ? 'pr-8' : 'pl-8'}`}>
+                <div className={`w-1/2 ${isArabic ? 'pl-8 text-left' : 'pl-8'}`}>
                   <div className={`text-griffin-teal ${isArabic ? 'text-lg' : 'text-sm'}`}>
                     {isArabic ? "VoIP: ٩٩.٩٪ وقت التشغيل" : "VoIP: 99.9% uptime"}
                   </div>
                 </div>
               </div>
               
-              {/* Timeline Item 2 */}
-              <div className="flex items-center mb-12">
-                <div className="w-1/2 pr-8 text-right">
-                  <div className="text-sm text-griffin-teal">
+              <div className={`flex items-center mb-12 ${isArabic ? 'flex-row-reverse' : ''}`}>
+                <div className={`w-1/2 ${isArabic ? 'pr-8' : 'pr-8 text-right'}`}>
+                  <div className={`text-griffin-teal ${isArabic ? 'text-lg' : 'text-sm'}`}>
                     {isArabic ? "IVR: توجيه الاتصال الذكي" : "IVR: Intelligent Call Routing"}
                   </div>
                 </div>
                 <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-griffin-teal rounded-full">
                   <div className="w-10 h-10 bg-griffin-teal bg-opacity-20 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-ping"></div>
                 </div>
-                <div className="w-1/2 pl-8">
-                  <h4 className="font-bold text-griffin-darkBlue">
+                <div className={`w-1/2 ${isArabic ? 'pl-8' : 'pl-8'}`}>
+                  <h4 className={`font-bold text-griffin-darkBlue ${isArabic ? 'text-xl mb-2' : ''}`}>
                     {isArabic ? "التنفيذ" : "Implementation"}
                   </h4>
-                  <p className="text-sm text-gray-600">
+                  <p className={`${isArabic ? 'text-base leading-relaxed' : 'text-sm'} text-gray-600`}>
                     {isArabic ? "تكامل الأنظمة وتدريب الموظفين" : "System integration and staff training"}
                   </p>
                 </div>
               </div>
               
-              {/* Timeline Item 3 */}
-              <div className="flex items-center">
-                <div className="w-1/2 pr-8 text-right">
-                  <h4 className="font-bold text-griffin-darkBlue">
+              <div className={`flex items-center ${isArabic ? 'flex-row-reverse' : ''}`}>
+                <div className={`w-1/2 ${isArabic ? 'pr-8' : 'pr-8 text-right'}`}>
+                  <h4 className={`font-bold text-griffin-darkBlue ${isArabic ? 'text-xl mb-2' : ''}`}>
                     {isArabic ? "القياس والتحسين" : "Measurement & Optimization"}
                   </h4>
-                  <p className="text-sm text-gray-600">
+                  <p className={`${isArabic ? 'text-base leading-relaxed' : 'text-sm'} text-gray-600`}>
                     {isArabic ? "تحليل البيانات وتحسين العمليات" : "Data analysis and process improvement"}
                   </p>
                 </div>
                 <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-griffin-teal rounded-full">
                   <div className="w-10 h-10 bg-griffin-teal bg-opacity-20 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-ping"></div>
                 </div>
-                <div className="w-1/2 pl-8">
-                  <div className="text-sm text-griffin-teal">
+                <div className={`w-1/2 ${isArabic ? 'pl-8 text-left' : 'pl-8'}`}>
+                  <div className={`text-griffin-teal ${isArabic ? 'text-lg' : 'text-sm'}`}>
                     {isArabic ? "الأداء: تحسين بنسبة ٤٠٪" : "Performance: 40% improvement"}
                   </div>
                 </div>
