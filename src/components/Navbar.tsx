@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ShoppingCart } from "lucide-react";
@@ -28,6 +29,11 @@ const Navbar = ({ isArabic, cartCount, onLanguageToggle }: NavbarProps) => {
 
   const isActivePage = (path: string) => {
     return location.pathname === path;
+  };
+
+  // Add the missing toggleMenu function
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   const navItems = [
