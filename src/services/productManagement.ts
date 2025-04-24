@@ -1,4 +1,3 @@
-
 // Product Management Service
 
 // Define product structure
@@ -114,199 +113,160 @@ export async function initializeDemoProducts(): Promise<void> {
   if (products.length === 0) {
     const demoProducts: ProductType[] = [
       {
-        id: "vpn_service",
-        title: "VPN Installation Package",
-        title_ar: "باقة تركيب VPN",
-        description: "Complete VPN solution with setup, configuration, and support.",
-        description_ar: "حل VPN كامل مع الإعداد والتكوين والدعم.",
-        price: 299,
+        id: "vpn_hardware",
+        title: "VPN Router Package",
+        title_ar: "باقة راوتر VPN",
+        description: "Enterprise-grade VPN router with pre-configured security settings.",
+        description_ar: "راوتر VPN للشركات مع إعدادات أمان مسبقة التكوين.",
+        price: 599,
         imageSrc: "/vpn.svg",
         features: [
-          "Secure remote access setup",
-          "Multiple device support",
+          "Pre-configured security settings",
+          "Multi-WAN support",
+          "Hardware firewall",
           "24/7 technical support",
-          "Regular security updates",
-          "Network monitoring"
+          "1-year warranty"
         ],
         features_ar: [
-          "إعداد وصول عن بُعد آمن",
-          "دعم الأجهزة المتعددة",
+          "إعدادات أمان مسبقة التكوين",
+          "دعم متعدد WAN",
+          "جدار حماية مادي",
           "دعم فني على مدار الساعة",
-          "تحديثات أمنية منتظمة",
-          "مراقبة الشبكة"
+          "ضمان لمدة سنة"
         ],
-        categoryId: "vpn",
+        categoryId: "hardware",
         variants: [
           {
-            id: "basic_vpn",
-            name: "Basic VPN",
-            name_ar: "VPN أساسي",
+            id: "basic_router",
+            name: "Basic Router",
+            name_ar: "راوتر أساسي",
+            price: 599
+          },
+          {
+            id: "pro_router",
+            name: "Pro Router",
+            name_ar: "راوتر احترافي",
+            price: 899
+          }
+        ],
+        relatedProductIds: ["ip_phone", "network_switch"]
+      },
+      {
+        id: "ip_phone",
+        title: "IP Phone System",
+        title_ar: "نظام هاتف IP",
+        description: "Professional IP phone system for business communications.",
+        description_ar: "نظام هاتف IP احترافي لاتصالات الأعمال.",
+        price: 299,
+        imageSrc: "/callcenter.svg",
+        features: [
+          "HD voice quality",
+          "Multiple line support",
+          "Power over Ethernet",
+          "Advanced call features",
+          "Conference calling"
+        ],
+        features_ar: [
+          "جودة صوت عالية الدقة",
+          "دعم خطوط متعددة",
+          "الطاقة عبر الإيثرنت",
+          "ميزات اتصال متقدمة",
+          "مكالمات جماعية"
+        ],
+        categoryId: "hardware",
+        variants: [
+          {
+            id: "standard_phone",
+            name: "Standard Phone",
+            name_ar: "هاتف قياسي",
             price: 299
           },
           {
-            id: "business_vpn",
-            name: "Business VPN",
-            name_ar: "VPN للأعمال",
+            id: "executive_phone",
+            name: "Executive Phone",
+            name_ar: "هاتف تنفيذي",
             price: 499
           }
         ],
-        relatedProductIds: ["callcenter_service", "network_service"]
+        relatedProductIds: ["vpn_hardware", "network_switch"]
       },
       {
-        id: "callcenter_service",
-        title: "Call Center Setup",
-        title_ar: "إعداد مركز الاتصال",
-        description: "Professional call center system implementation with VoIP integration.",
-        description_ar: "تنفيذ نظام مركز اتصال احترافي مع تكامل VoIP.",
-        price: 1999,
-        imageSrc: "/callcenter.svg",
-        features: [
-          "VoIP system setup",
-          "Call routing configuration",
-          "Agent training",
-          "Quality monitoring tools",
-          "Analytics dashboard"
-        ],
-        features_ar: [
-          "إعداد نظام VoIP",
-          "تكوين توجيه المكالمات",
-          "تدريب الموظفين",
-          "أدوات مراقبة الجودة",
-          "لوحة تحليلات"
-        ],
-        categoryId: "callcenter",
-        variants: [
-          {
-            id: "small_cc",
-            name: "Small Team",
-            name_ar: "فريق صغير",
-            price: 1999
-          },
-          {
-            id: "large_cc",
-            name: "Enterprise",
-            name_ar: "مؤسسات",
-            price: 3999
-          }
-        ],
-        relatedProductIds: ["crm_service", "vpn_service"]
-      },
-      {
-        id: "crm_service",
-        title: "CRM Implementation",
-        title_ar: "تنفيذ نظام CRM",
-        description: "Custom CRM solution implementation with training and support.",
-        description_ar: "تنفيذ حل CRM مخصص مع التدريب والدعم.",
-        price: 1499,
-        imageSrc: "/crm.svg",
-        features: [
-          "Custom workflow setup",
-          "Data migration",
-          "User training",
-          "Integration support",
-          "Reporting setup"
-        ],
-        features_ar: [
-          "إعداد سير العمل المخصص",
-          "ترحيل البيانات",
-          "تدريب المستخدمين",
-          "دعم التكامل",
-          "إعداد التقارير"
-        ],
-        categoryId: "crm",
-        variants: [
-          {
-            id: "starter_crm",
-            name: "Starter CRM",
-            name_ar: "CRM مبتدئ",
-            price: 1499
-          },
-          {
-            id: "premium_crm",
-            name: "Premium CRM",
-            name_ar: "CRM متميز",
-            price: 2499
-          }
-        ],
-        relatedProductIds: ["callcenter_service", "pos_service"]
-      },
-      {
-        id: "pos_service",
-        title: "POS System Setup",
-        title_ar: "إعداد نظام نقاط البيع",
-        description: "Complete point-of-sale system with hardware and software setup.",
-        description_ar: "نظام نقاط بيع كامل مع إعداد الأجهزة والبرامج.",
-        price: 2499,
-        imageSrc: "/pos.svg",
-        features: [
-          "Hardware installation",
-          "Software configuration",
-          "Staff training",
-          "Inventory setup",
-          "Payment integration"
-        ],
-        features_ar: [
-          "تركيب الأجهزة",
-          "تكوين البرامج",
-          "تدريب الموظفين",
-          "إعداد المخزون",
-          "تكامل المدفوعات"
-        ],
-        categoryId: "pos",
-        variants: [
-          {
-            id: "basic_pos",
-            name: "Basic POS",
-            name_ar: "نقاط بيع أساسية",
-            price: 2499
-          },
-          {
-            id: "advanced_pos",
-            name: "Advanced POS",
-            name_ar: "نقاط بيع متقدمة",
-            price: 3999
-          }
-        ],
-        relatedProductIds: ["network_service", "crm_service"]
-      },
-      {
-        id: "network_service",
-        title: "Network Design & Implementation",
-        title_ar: "تصميم وتنفيذ الشبكات",
-        description: "Professional network infrastructure design and setup.",
-        description_ar: "تصميم وإعداد البنية التحتية للشبكات بشكل احترافي.",
-        price: 3999,
+        id: "network_switch",
+        title: "Managed Network Switch",
+        title_ar: "سويتش شبكة مُدار",
+        description: "Enterprise managed switch with advanced networking features.",
+        description_ar: "سويتش مُدار للشركات مع ميزات شبكات متقدمة.",
+        price: 799,
         imageSrc: "/network.svg",
         features: [
-          "Network assessment",
-          "Infrastructure design",
-          "Security implementation",
-          "Performance optimization",
-          "Documentation"
+          "Layer 3 switching",
+          "PoE+ support",
+          "VLAN management",
+          "QoS features",
+          "Remote management"
         ],
         features_ar: [
-          "تقييم الشبكة",
-          "تصميم البنية التحتية",
-          "تنفيذ الأمان",
-          "تحسين الأداء",
-          "التوثيق"
+          "تبديل Layer 3",
+          "دعم PoE+",
+          "إدارة VLAN",
+          "ميزات جودة الخدمة",
+          "إدارة عن بعد"
         ],
-        categoryId: "network",
+        categoryId: "hardware",
         variants: [
           {
-            id: "smb_network",
-            name: "SMB Network",
-            name_ar: "شبكة الشركات الصغيرة",
-            price: 3999
+            id: "24_port",
+            name: "24-Port Switch",
+            name_ar: "سويتش 24 منفذ",
+            price: 799
           },
           {
-            id: "enterprise_network",
-            name: "Enterprise Network",
-            name_ar: "شبكة المؤسسات",
-            price: 7999
+            id: "48_port",
+            name: "48-Port Switch",
+            name_ar: "سويتش 48 منفذ",
+            price: 1499
           }
         ],
-        relatedProductIds: ["vpn_service", "pos_service"]
+        relatedProductIds: ["vpn_hardware", "ip_phone"]
+      },
+      {
+        id: "pos_terminal",
+        title: "POS Terminal",
+        title_ar: "جهاز نقاط البيع",
+        description: "Complete point-of-sale hardware terminal with touchscreen.",
+        description_ar: "جهاز نقاط بيع كامل مع شاشة تعمل باللمس.",
+        price: 1299,
+        imageSrc: "/pos.svg",
+        features: [
+          "15\" touchscreen display",
+          "Thermal receipt printer",
+          "Barcode scanner",
+          "Cash drawer",
+          "Customer display"
+        ],
+        features_ar: [
+          "شاشة لمس 15 بوصة",
+          "طابعة إيصالات حرارية",
+          "ماسح الباركود",
+          "درج النقود",
+          "شاشة العميل"
+        ],
+        categoryId: "hardware",
+        variants: [
+          {
+            id: "standard_pos",
+            name: "Standard Terminal",
+            name_ar: "جهاز قياسي",
+            price: 1299
+          },
+          {
+            id: "premium_pos",
+            name: "Premium Terminal",
+            name_ar: "جهاز متميز",
+            price: 1999
+          }
+        ],
+        relatedProductIds: ["network_switch", "ip_phone"]
       }
     ];
     
@@ -317,4 +277,3 @@ export async function initializeDemoProducts(): Promise<void> {
 
 // Initialize demo products when the service is imported
 initializeDemoProducts();
-
